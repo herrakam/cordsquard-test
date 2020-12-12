@@ -14,30 +14,23 @@
         let word = iptArray[0].toString();
         let num = parseInt(iptArray[1]);
         let way = iptArray[2].toString();
-        if (num < 0 && (way == "l" || way == "L")) {
-            way = "r";
-            num *= -1
+        let isLeft = way == "l" || way == "L";
+        if (num < 0) {
+            num *= -1;
+            isLeft = !isLeft
         }
-        else if (num < 0 && (way == "r" || way == "R")) {
-            way = "l";
-            num *= -1
-        }
+
         let wordPart1 = num % word.length
-        if (way == "l" || way == "L") {
-            let a = word.substr(0,wordPart1)
-            let b = word.substr(wordPart1,word.length)
-            console.log(b+a)
+        if (isLeft) {
+            let a = word.substr(0, wordPart1)
+            let b = word.substr(wordPart1, word.length)
+            console.log(b + a)
         }
-        else if (way == "r" || way == "R") {
-            let a = word.substr(word.length-wordPart1,word.length)
-            let b = word.substr(0,word.length-wordPart1)
-            console.log(a+b)
+        else if (isLeft==false) {
+            let a = word.substr(word.length - wordPart1, word.length)
+            let b = word.substr(0, word.length - wordPart1)
+            console.log(a + b)
         }
-        else {
-            console.log("방향 잘못 입력함")
-        }
-
-
     </script>
 </body>
 
