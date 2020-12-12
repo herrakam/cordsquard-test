@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let input = prompt("단어를 입력하세요");
+        let iptArray = input.split(" ");
+        let word = iptArray[0].toString();
+        let num = parseInt(iptArray[1]);
+        let way = iptArray[2].toString();
+        if (num < 0 && (way == "l" || way == "L")) {
+            way = "r";
+            num *= -1
+        }
+        else if (num < 0 && (way == "r" || way == "R")) {
+            way = "l";
+            num *= -1
+        }
+        let wordPart1 = num % word.length
+        if (way == "l" || way == "L") {
+            let a = word.substr(0,wordPart1)
+            let b = word.substr(wordPart1,word.length)
+            console.log(b+a)
+        }
+        else if (way == "r" || way == "R") {
+            let a = word.substr(word.length-wordPart1,word.length)
+            let b = word.substr(0,word.length-wordPart1)
+            console.log(a+b)
+        }
+        else {
+            console.log("방향 잘못 입력함")
+        }
+
+
+    </script>
+</body>
+
+</html>
